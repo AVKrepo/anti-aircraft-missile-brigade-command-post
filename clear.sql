@@ -1,3 +1,13 @@
+DROP TRIGGER IF EXISTS assign_new_target_trigger CASCADE;
+DROP FUNCTION IF EXISTS assign_new_target();
+
+DROP VIEW IF EXISTS target_assignment_variants CASCADE;
+DROP VIEW IF EXISTS current_distances CASCADE;
+DROP VIEW IF EXISTS spent_ammunition CASCADE;
+DROP VIEW IF EXISTS not_fired_dangerous_targets CASCADE;
+DROP VIEW IF EXISTS ready_divisions_positions CASCADE;
+DROP VIEW IF EXISTS recent_target_marks CASCADE;
+
 DROP TABLE IF EXISTS missile_launches CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS divisions CASCADE;
