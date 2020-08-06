@@ -1,0 +1,1 @@
+psql -f clean/clear.sql

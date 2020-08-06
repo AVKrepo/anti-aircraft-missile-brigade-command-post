@@ -1,8 +1,9 @@
-psql -f create_tables.sql
-psql -f insert_values.sql
-psql -f create_functions.sql
-psql -f create_views.sql
-psql -f create_trigger.sql
+psql -f setup/create_roles.sql
+psql -f setup/create_tables.sql
+psql -f setup/insert_values.sql
+psql -f setup/create_functions.sql
+psql -f setup/create_views.sql
+psql -f setup/create_trigger.sql
 
 # psql -f insert_new_radar_data.sql
 # проверить работу тригера: должен появиться приказ в orders

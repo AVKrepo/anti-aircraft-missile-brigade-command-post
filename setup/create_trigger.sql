@@ -11,7 +11,8 @@ CREATE OR REPLACE FUNCTION assign_new_target() RETURNS TRIGGER AS $$
         END IF;
         RETURN NULL; -- возвращаемое значение для триггера AFTER игнорируется
     END;
-$$ LANGUAGE plpgsql;
+$$  LANGUAGE plpgsql
+    SECURITY DEFINER;
 
 CREATE TRIGGER assign_new_target_trigger
 AFTER INSERT ON target_to_marks

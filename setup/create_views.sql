@@ -16,6 +16,8 @@ FROM
     INNER JOIN target_marks t3
         ON t2.target_mark_id = t3.target_mark_id
 ORDER BY t1.target_id, t3.dttm DESC;
+GRANT SELECT ON recent_target_marks TO radar_operator;
+GRANT SELECT ON recent_target_marks TO observer;
 
 
 -- расположение зрдн, готовых к бою
@@ -28,6 +30,7 @@ SELECT
     longtitude
 FROM divisions
 WHERE readiness = TRUE;
+GRANT SELECT ON ready_divisions_positions TO observer;
 
 
 -- СВН противника (и самая свежая информация об их расположении), по которым еще не были запущены ЗУР
@@ -48,6 +51,7 @@ WHERE TRUE
         SELECT target_id
         FROM missile_launches
     );
+GRANT SELECT ON not_fired_dangerous_targets TO observer;
 
 
 -- количество ЗУР, выпущенных по целям, для каждого зрдн (контроль за оставшимся боезапасом)
@@ -63,6 +67,7 @@ FROM
         ON t1.division_id = t2.division_id
 GROUP BY t1.division_id, t1.division_name
 ORDER BY t1.division_id;
+GRANT SELECT ON spent_ammunition TO observer;
 
 
 -- расстояния от текущего расположения еще не обстрелянного СВН противника до каждого из зрдн, готовых к бою
@@ -77,6 +82,7 @@ SELECT
 FROM
     not_fired_dangerous_targets t1, ready_divisions_positions t2
 ORDER BY t1.target_id, t2.division_id;
+GRANT SELECT ON current_distances TO observer;
 
 
 -- варианты выбора зрдн для тех СВН противника, для которых еще не было приказа (в порядке дальности)
@@ -111,3 +117,4 @@ WHERE TRUE
         FROM orders
     )
 ORDER BY t1.target_id, t2.distance;
+GRANT SELECT ON target_assignment_variants TO observer;

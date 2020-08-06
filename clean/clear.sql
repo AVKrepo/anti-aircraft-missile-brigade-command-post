@@ -1,5 +1,5 @@
-DROP TRIGGER IF EXISTS assign_new_target_trigger CASCADE;
-DROP FUNCTION IF EXISTS assign_new_target();
+DROP TRIGGER IF EXISTS assign_new_target_trigger ON target_to_marks CASCADE;
+DROP FUNCTION IF EXISTS assign_new_target() CASCADE;
 
 DROP VIEW IF EXISTS target_assignment_variants CASCADE;
 DROP VIEW IF EXISTS current_distances CASCADE;
@@ -18,3 +18,10 @@ DROP TABLE IF EXISTS target_marks CASCADE;
 
 DROP FUNCTION IF EXISTS great_circle_distance(float, float, float, float);
 
+DROP USER IF EXISTS colonel_sidorov;
+DROP USER IF EXISTS observer_ivanov;
+DROP USER IF EXISTS operator_petrov;
+
+DROP ROLE IF EXISTS division_commander;
+DROP ROLE IF EXISTS observer;
+DROP ROLE IF EXISTS radar_operator;
